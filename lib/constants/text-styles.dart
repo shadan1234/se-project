@@ -1,6 +1,24 @@
 import 'package:flutter/material.dart';
 import 'colors.dart';
 class AppTextStyles {
+    static const TextStyle authTitle = TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.bold,
+    color: AppColors.primaryText, // Default to light mode primary text
+  );
+
+  static const TextStyle authSubtitle = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    color: AppColors.secondaryText, // Muted gray text for subtitles
+  );
+
+  static const TextStyle authTitleDark = TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.bold,
+    color: AppColors.darkText, // Light text for dark mode
+  );
+  
   static const TextStyle headline1 = TextStyle(
     fontSize: 96.0,
     fontWeight: FontWeight.bold,

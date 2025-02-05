@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:se_project/constants/app-themes.dart';
 import 'package:se_project/constants/size_config.dart';
+import 'package:se_project/features/auth/screens/auth-main-screen.dart';
 import 'package:se_project/features/onboarding/screens/onboarding-screen.dart';
 import 'package:se_project/router.dart';
 
@@ -45,7 +46,7 @@ class _MyAppState extends State<MyApp> {
       title: 'ClubHub',
       theme: AppTheme.themeData,
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: OnBoardingScreen(),
+      home: AuthMainScreen(),
     );
   }
 
