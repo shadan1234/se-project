@@ -1,0 +1,194 @@
+import 'package:flutter/material.dart';
+import 'package:se_project/common/textfield.dart';
+import 'package:se_project/constants/colors.dart';
+import 'package:se_project/constants/size_config.dart';
+import 'package:se_project/constants/text-styles.dart';
+import 'package:se_project/features/customer/general-screen.dart';
+
+class SignUpScreen extends StatefulWidget {
+  static const String routeName = "/signup";
+  const SignUpScreen({super.key});
+
+  @override
+  _SignUpScreenState createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
+  String email = "";
+  String password = "";
+  String confirmPassword = "";
+  bool isPasswordVisible = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              AppColors.primary,
+              AppColors.darkPrimary,
+            ],
+          ),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(height: 80),
+              Icon(Icons.person_add, size: 80, color: AppColors.accent),
+              const SizedBox(height: 20),
+
+              // Title
+              Text("Create Account",
+                  style: AppTextStyles.authTitle
+                      .copyWith(color: AppColors.accent)),
+              const SizedBox(height: 10),
+
+              // Subtitle
+              Text("Join us and explore new possibilities",
+                  style: AppTextStyles.authSubtitle
+                      .copyWith(color: AppColors.secondaryText),
+                  textAlign: TextAlign.center),
+              const SizedBox(height: 40),
+
+              CustomInputField(
+                hintText: "Full Name",
+                icon: Icons.person,
+                controller: nameController,
+              ),
+
+              CustomInputField(
+                hintText: "Email Address",
+                icon: Icons.email,
+                keyboardType: TextInputType.emailAddress,
+                controller: emailController,
+              ),
+
+              CustomInputField(
+                hintText: "Contact Number",
+                icon: Icons.phone,
+                keyboardType: TextInputType.phone,
+                controller: phoneController,
+              ),
+
+              CustomInputField(
+                hintText: "Password",
+                icon: Icons.lock,
+                isPassword: true,
+                controller: passwordController,
+              ),
+
+              const SizedBox(height: 20),
+              _buildButton(context, "Sign Up", AppColors.secondary, GeneralScreen.routeName),
+              _buildOutlinedButton(context, "Back to Sign In", '/signin'),
+
+              const SizedBox(height: 20),
+              Text("Or Sign Up with",
+                  style: AppTextStyles.authSubtitle
+                      .copyWith(color: AppColors.secondaryText)),
+              const SizedBox(height: 10),
+              _buildGoogleButton(),
+              const SizedBox(height: 40),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildButton(
+      BuildContext context, String text, Color color, String route) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      width: double.infinity,
+      height: 55,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: color,
+        boxShadow: [
+          BoxShadow(color: Colors.black26, blurRadius: 8, offset: Offset(2, 4))
+        ],
+      ),
+      child: TextButton(
+        child: Text(
+          text,
+          style: TextStyle(
+            color: AppColors.primary,
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        onPressed: () => Navigator.pushNamed(context, route),
+      ),
+    );
+  }
+
+  Widget _buildOutlinedButton(BuildContext context, String text, String route) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      width: double.infinity,
+      height: 55,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppColors.accent, width: 2),
+      ),
+      child: TextButton(
+        child: Text(
+          text,
+          style: TextStyle(
+            color: AppColors.accent,
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        onPressed: () => Navigator.pushNamed(context, route),
+      ),
+    );
+  }
+
+  Widget _buildGoogleButton() {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      width: double.infinity,
+      height: 55,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(color: Colors.black26, blurRadius: 8, offset: Offset(2, 4))
+        ],
+      ),
+      child: TextButton(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.g_translate, color: AppColors.primary),
+            const SizedBox(width: 10),
+            Text(
+              "Sign Up with Google",
+              style: TextStyle(
+                color: AppColors.primary,
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
+        ),
+        onPressed: () {
+          // Handle Google Sign-Up Logic
+        },
+      ),
+    );
+  }
+}

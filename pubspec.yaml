@@ -41,6 +41,12 @@ dependencies:
   firebase_storage: ^12.4.1
   firebase_database: ^11.3.1
   firebase_notifications_handler: ^2.0.2+1
+  google_fonts: ^6.2.1
+  font_awesome_icon_class: ^0.0.6
+  youtube_video_player: ^0.1.1
+  youtube_player_flutter: ^9.1.1
+  webview_flutter: ^4.10.0
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:

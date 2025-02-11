@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:se_project/constants/colors.dart';
 import 'package:se_project/constants/size_config.dart';
 import 'package:se_project/constants/text-styles.dart';
+import 'package:se_project/features/auth/screens/signin-screen.dart';
+import 'package:se_project/features/auth/screens/signup-screen.dart';
 
 class AuthMainScreen extends StatelessWidget {
   const AuthMainScreen({super.key});
@@ -42,8 +44,8 @@ class AuthMainScreen extends StatelessWidget {
             const SizedBox(height: 40),
 
             // Buttons with updated colors
-            _buildButton(context, "Sign In", AppColors.secondary, '/signin'),   // Gold Button
-            _buildButton(context, "Sign Up", AppColors.accent, '/signup'),     // Soft White Button
+            _buildButton(context, "Sign In", AppColors.secondary, SignUpScreen.routeName),   // Gold Button
+            _buildButton(context, "Sign Up", AppColors.accent, SignInScreen.routeName ),     // Soft White Button
             _buildOutlinedButton(context, "Enter as Guest", '/home'),          // Outlined Button
 
             const SizedBox(height: 30),
@@ -75,7 +77,10 @@ class AuthMainScreen extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
-        onPressed: () => Navigator.pushNamed(context, route),
+        onPressed: (){ 
+          
+          Navigator.pushNamed(context, route);
+        }
       ),
     );
   }
