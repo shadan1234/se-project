@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:se_project/features/admin/general-screen-admin.dart';
 import 'package:se_project/features/auth/screens/signup-screen.dart';
 import 'package:se_project/features/auth/screens/signin-screen.dart';
 import 'package:se_project/features/customer/general-screen.dart';
@@ -20,6 +21,11 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
          return MaterialPageRoute(
           settings: routeSettings,
           builder: (_)=> GeneralScreen()
+         );
+            case AdminScreen.routeName:
+         return MaterialPageRoute(
+          settings: routeSettings,
+          builder: (_)=> AdminScreen()
          );
     // case CreateAccountScreen.routeName:
     //   return MaterialPageRoute(

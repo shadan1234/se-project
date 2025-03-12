@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:se_project/constants/colors.dart';
+import 'package:se_project/features/auth/screens/auth-main-screen.dart';
+import 'package:se_project/features/auth/screens/signup-screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   @override
@@ -12,31 +14,31 @@ class ProfileScreen extends StatelessWidget {
       body: Column(
         children: [
           // Profile Header
-          Container(
-            padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: AppColors.primary,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
+          Padding(
+            padding: const EdgeInsets.all(28.0),
+            child: Container(
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: AppColors.primary,
+                borderRadius: BorderRadius.all(Radius.circular(20))
               ),
-            ),
-            child: Column(
-              children: [
-                CircleAvatar(
-                  radius: 50,
-                  backgroundImage: AssetImage("assets/profile.jpg"), // Ensure you have this image
-                ),
-                SizedBox(height: 10),
-                Text(
-                  "John Doe",
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
-                ),
-                Text(
-                  "johndoe@example.com",
-                  style: TextStyle(fontSize: 16, color: Colors.white70),
-                ),
-              ],
+              child: Column(
+                children: [
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundImage: AssetImage("assets/shad.jpg"), // Ensure you have this image
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    "Shadan Hussain",
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
+                  ),
+                  Text(
+                    "shadan@gmail.com",
+                    style: TextStyle(fontSize: 16, color: Colors.white70),
+                  ),
+                ],
+              ),
             ),
           ),
           SizedBox(height: 20),
@@ -44,7 +46,9 @@ class ProfileScreen extends StatelessWidget {
           _buildProfileOption(Icons.edit, "Edit Profile", () {}),
           _buildProfileOption(Icons.history, "Booking History", () {}),
           _buildProfileOption(Icons.settings, "Settings", () {}),
-          _buildProfileOption(Icons.logout, "Logout", () {}),
+          _buildProfileOption(Icons.logout, "Logout", () {
+            Navigator.popAndPushNamed(context, SignUpScreen.routeName );
+          }),
         ],
       ),
     );

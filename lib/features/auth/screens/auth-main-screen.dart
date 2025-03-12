@@ -46,7 +46,7 @@ class AuthMainScreen extends StatelessWidget {
             // Buttons with updated colors
             _buildButton(context, "Sign In", AppColors.secondary, SignUpScreen.routeName),   // Gold Button
             _buildButton(context, "Sign Up", AppColors.accent, SignInScreen.routeName ),     // Soft White Button
-            _buildOutlinedButton(context, "Enter as Guest", '/home'),          // Outlined Button
+            _buildOutlinedButton(context, "Enter as Guest", '/admin-screen'),          // Outlined Button
 
             const SizedBox(height: 30),
           ],
