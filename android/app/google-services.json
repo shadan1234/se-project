@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "750311138513",
+    "project_id": "hotel-automation-software",
+    "storage_bucket": "hotel-automation-software.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:750311138513:android:b990a27235a269a74b51f0",
+        "android_client_info": {
+          "package_name": "com.example.se_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "750311138513-9fac1eflm2jad9hs0bl8brp9j3grfrpq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.se_project",
+            "certificate_hash": "f8347f439e52d1c0a20e3cd4ef6ceebfffa41219"
+          }
+        },
+        {
+          "client_id": "750311138513-a335nk1a5hncvpjvue6sgjh4jo7had0p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.se_project",
+            "certificate_hash": "d0ccc248d26e6511f46c0175ed05c7aa4eea0b96"
+          }
+        },
+        {
+          "client_id": "750311138513-9chkrpn1qbgf0f31bfqc4uegdp358ib4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkVxu5MG7KvwIs-2_rCZVuNezMxw9mXac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "750311138513-9chkrpn1qbgf0f31bfqc4uegdp358ib4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "750311138513-00dp1m4pi850ihoi2nu3dvm3cdk0jokv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.seProject"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

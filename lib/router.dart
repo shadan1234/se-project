@@ -1,12 +1,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:se_project/features/admin/general-screen-admin.dart';
+import 'package:se_project/features/auth/screens/auth-main-screen.dart';
 import 'package:se_project/features/auth/screens/signup-screen.dart';
 import 'package:se_project/features/auth/screens/signin-screen.dart';
 import 'package:se_project/features/customer/general-screen.dart';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
   switch (routeSettings.name) {
+     case AuthMainScreen.routeName:
+         return MaterialPageRoute(
+          settings: routeSettings,
+          builder: (_)=>const AuthMainScreen()
+         );
     case SignUpScreen.routeName:
          return MaterialPageRoute(
           settings: routeSettings,

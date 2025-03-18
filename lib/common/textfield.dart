@@ -7,6 +7,7 @@ class CustomInputField extends StatefulWidget {
   final bool isPassword;
   final TextInputType keyboardType;
   final TextEditingController controller;
+  final String? Function(String?)? validator; // Validation function
 
   const CustomInputField({
     super.key,
@@ -15,6 +16,7 @@ class CustomInputField extends StatefulWidget {
     this.isPassword = false,
     this.keyboardType = TextInputType.text,
     required this.controller,
+    this.validator,
   });
 
   @override
@@ -33,6 +35,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
         obscureText: widget.isPassword && !isPasswordVisible,
         style: const TextStyle(color: Colors.white),
         keyboardType: widget.keyboardType,
+        validator: widget.validator, // Apply validation
         decoration: InputDecoration(
           hintText: widget.hintText,
           hintStyle: TextStyle(color: AppColors.secondaryText),

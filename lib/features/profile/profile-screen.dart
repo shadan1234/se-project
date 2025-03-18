@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:se_project/constants/colors.dart';
 import 'package:se_project/features/auth/screens/auth-main-screen.dart';
 import 'package:se_project/features/auth/screens/signup-screen.dart';
+import 'package:se_project/features/auth/services/auth-service.dart';
 
 class ProfileScreen extends StatelessWidget {
+  AuthService _authService=AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +49,8 @@ class ProfileScreen extends StatelessWidget {
           _buildProfileOption(Icons.history, "Booking History", () {}),
           _buildProfileOption(Icons.settings, "Settings", () {}),
           _buildProfileOption(Icons.logout, "Logout", () {
-            Navigator.popAndPushNamed(context, SignUpScreen.routeName );
+            _authService.signOut();
+            Navigator.pushReplacementNamed(context, AuthMainScreen.routeName); 
           }),
         ],
       ),

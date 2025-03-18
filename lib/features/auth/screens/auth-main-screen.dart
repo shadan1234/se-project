@@ -6,6 +6,7 @@ import 'package:se_project/features/auth/screens/signin-screen.dart';
 import 'package:se_project/features/auth/screens/signup-screen.dart';
 
 class AuthMainScreen extends StatelessWidget {
+static const String routeName = '/auth-main-screen';
   const AuthMainScreen({super.key});
 
   @override
@@ -44,8 +45,8 @@ class AuthMainScreen extends StatelessWidget {
             const SizedBox(height: 40),
 
             // Buttons with updated colors
-            _buildButton(context, "Sign In", AppColors.secondary, SignUpScreen.routeName),   // Gold Button
-            _buildButton(context, "Sign Up", AppColors.accent, SignInScreen.routeName ),     // Soft White Button
+            _buildButton(context, "Sign Up", AppColors.secondary, SignUpScreen.routeName),   // Gold Button
+            _buildButton(context, "Sign In", AppColors.accent, SignInScreen.routeName ),     // Soft White Button
             _buildOutlinedButton(context, "Enter as Guest", '/admin-screen'),          // Outlined Button
 
             const SizedBox(height: 30),

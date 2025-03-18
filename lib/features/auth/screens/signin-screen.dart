@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:se_project/common/textfield.dart';
 import 'package:se_project/constants/colors.dart';
+import 'package:se_project/features/auth/services/auth-service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:se_project/features/customer/general-screen.dart';
 
 class SignInScreen extends StatefulWidget {
-  static const String routeName='/signin';
+  static const String routeName = '/signin';
   const SignInScreen({super.key});
 
   @override
@@ -11,13 +14,50 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final AuthService _authService = AuthService(); // Initialize AuthService
+  bool isLoading = false;
+
+  // Function to handle sign-in
+  void _handleSignIn() async {
+    setState(() {
+      isLoading = true; // Show loading indicator
+    });
+
+    String email = emailController.text.trim();
+    String password = passwordController.text.trim();
+
+    if (email.isEmpty || password.isEmpty) {
+      _showSnackBar("Please enter email and password");
+      setState(() => isLoading = false);
+      return;
+    }
+
+    User? user = await _authService.loginWithEmail(email, password);
+    
+    if (user != null) {
+      _showSnackBar("Sign-in successful!");
+    Navigator.pushReplacementNamed(context, GeneralScreen.routeName);
+    } else {
+      _showSnackBar("Invalid credentials. Please try again.");
+    }
+
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  // Snackbar function for showing messages
+  void _showSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold( resizeToAvoidBottomInset: false,
       body: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -36,11 +76,9 @@ class _SignInScreenState extends State<SignInScreen> {
           children: [
             const SizedBox(height: 60),
 
-            // App Icon or Logo
             Icon(Icons.lock_outline, size: 80, color: AppColors.accent),
             const SizedBox(height: 20),
 
-            // Title Text
             Text("Sign In",
                 style: TextStyle(
                     color: AppColors.accent,
@@ -48,7 +86,6 @@ class _SignInScreenState extends State<SignInScreen> {
                     fontWeight: FontWeight.bold)),
             const SizedBox(height: 10),
 
-            // Subtitle
             Text("Welcome back! Please enter your details",
                 style: TextStyle(color: AppColors.secondaryText),
                 textAlign: TextAlign.center),
@@ -73,11 +110,9 @@ class _SignInScreenState extends State<SignInScreen> {
             const SizedBox(height: 20),
 
             // Sign In Button
-            _buildButton(context, "Sign In", AppColors.accent, () {
-              // Handle sign-in logic here
-              print("Email: ${emailController.text}");
-              print("Password: ${passwordController.text}");
-            }),
+            isLoading
+                ? CircularProgressIndicator(color: AppColors.accent) // Show loader while signing in
+                : _buildButton(context, "Sign In", AppColors.accent, _handleSignIn),
 
             // Forgot Password
             TextButton(
