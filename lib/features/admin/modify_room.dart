@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:se_project/models/room_model.dart';
-import 'package:se_project/populate_data_firestore.dart';
+import 'package:se_project/firestore_updation.dart';
 
 class ModifyRoomScreen extends StatefulWidget {
   final Room room;

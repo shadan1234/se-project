@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:se_project/features/customer/other-services/services-service.dart';
-import 'package:se_project/populate_data_firestore.dart';
+import 'package:se_project/firestore_updation.dart';
 // import 'package:se_project/services/firestore_service.dart';
 
 class BookingScreen extends StatefulWidget {
