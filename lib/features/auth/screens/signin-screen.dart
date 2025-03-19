@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:se_project/common/textfield.dart';
 import 'package:se_project/constants/colors.dart';
+import 'package:se_project/features/admin/general-screen-admin.dart';
 import 'package:se_project/features/auth/services/auth-service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:se_project/features/customer/general-screen.dart';
@@ -19,6 +21,18 @@ class _SignInScreenState extends State<SignInScreen> {
   final AuthService _authService = AuthService(); // Initialize AuthService
   bool isLoading = false;
 
+  void navigateBasedOnRole(BuildContext context, User user) async {
+  DocumentSnapshot userDoc = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+  String role = userDoc['role'];
+  
+  if (role == "admin") {
+    Navigator.pushReplacementNamed(context, AdminScreen.routeName);
+  } else {
+    Navigator.pushReplacementNamed(context, GeneralScreen.routeName);
+  }
+}
+
+
   // Function to handle sign-in
   void _handleSignIn() async {
     setState(() {
@@ -34,11 +48,11 @@ class _SignInScreenState extends State<SignInScreen> {
       return;
     }
 
-    User? user = await _authService.loginWithEmail(email, password);
+    User? user = await _authService.loginWithEmail(context,email, password);
     
     if (user != null) {
       _showSnackBar("Sign-in successful!");
-    Navigator.pushReplacementNamed(context, GeneralScreen.routeName);
+        navigateBasedOnRole(context, user);
     } else {
       _showSnackBar("Invalid credentials. Please try again.");
     }

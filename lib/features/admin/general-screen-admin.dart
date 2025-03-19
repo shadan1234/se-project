@@ -4,6 +4,8 @@ import 'package:se_project/features/admin/admin-dashobard/admin-dashboard-screen
 import 'package:se_project/features/admin/manage-rooms/manage-rooms-screen.dart';
 import 'package:se_project/features/admin/manage-staff/manage-staff-screen.dart';
 import 'package:se_project/features/admin/reports/reports-screen.dart';
+import 'package:se_project/features/customer/booking/rooms-screen.dart';
+import 'package:se_project/features/profile/profile-screen.dart';
 
 
 class AdminScreen extends StatefulWidget {
@@ -18,9 +20,11 @@ class _AdminScreenState extends State<AdminScreen> {
 
   final List<Widget> _screens = [
     AdminDashboardScreen(),
-    ManageRoomsScreen(),
+    // ManageRoomsScreen(),
+    RoomListScreen(),
     ManageStaffScreen(),
     ReportsScreen(),
+    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -45,6 +49,7 @@ class _AdminScreenState extends State<AdminScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.meeting_room), label: 'Rooms'),
           BottomNavigationBarItem(icon: Icon(Icons.people), label: 'Staff'),
           BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: 'Reports'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),
     );

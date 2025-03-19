@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:se_project/constants/colors.dart';
 import 'package:se_project/constants/size_config.dart';
 import 'package:se_project/constants/text-styles.dart';
+import 'package:se_project/features/admin/add_room_screen.dart';
+import 'package:se_project/features/admin/image_upload-screen.dart';
 import 'package:se_project/features/auth/screens/signin-screen.dart';
 import 'package:se_project/features/auth/screens/signup-screen.dart';
+import 'package:se_project/features/customer/general-screen.dart';
 
 class AuthMainScreen extends StatelessWidget {
 static const String routeName = '/auth-main-screen';
@@ -47,7 +50,10 @@ static const String routeName = '/auth-main-screen';
             // Buttons with updated colors
             _buildButton(context, "Sign Up", AppColors.secondary, SignUpScreen.routeName),   // Gold Button
             _buildButton(context, "Sign In", AppColors.accent, SignInScreen.routeName ),     // Soft White Button
-            _buildOutlinedButton(context, "Enter as Guest", '/admin-screen'),          // Outlined Button
+            _buildOutlinedButton(context, "Enter as Guest",
+             AddRoomScreen.routeName  
+            //GeneralScreen.routeName 
+             ),          // Outlined Button
 
             const SizedBox(height: 30),
           ],

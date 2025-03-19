@@ -35,7 +35,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     String phone = phoneController.text.trim();
     String password = passwordController.text.trim();
 
-    final user = await _authService.signUpWithEmail(name, email, password, phone);
+    final user = await _authService.signUpWithEmail(context,name, email, password, phone);
     
     if (user != null) {
       Navigator.pushReplacementNamed(context, GeneralScreen.routeName);
@@ -51,7 +51,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   void signUpWithGoogle() async {
     setState(() => isLoading = true);
     
-    final user = await _authService.signInWithGoogle();
+    final user = await _authService.signInWithGoogle(context);
 
     if (user != null) {
       Navigator.pushReplacementNamed(context, GeneralScreen.routeName);

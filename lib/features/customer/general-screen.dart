@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:se_project/constants/colors.dart';
-import 'package:se_project/features/customer/booking/booking-screen.dart';
+// import 'package:se_project/features/customer/booking/booking-screen.dart';
+import 'package:se_project/features/customer/booking/rooms-screen.dart';
 import 'package:se_project/features/customer/home/home-screen.dart';
-import 'package:se_project/features/customer/services/services-screen.dart';
+import 'package:se_project/features/customer/other-services/services-screen.dart';
 import 'package:se_project/features/profile/profile-screen.dart';
 
 class GeneralScreen extends StatefulWidget {
@@ -17,7 +18,8 @@ class _GeneralScreenState extends State<GeneralScreen> {
 
   final List<Widget> _screens = [
     CustomerHomeScreen(),
-    BookingScreen(),
+    // BookingScreen(),
+    RoomListScreen(),
     ServicesScreen(),
     ProfileScreen(),
   ];
