@@ -38,7 +38,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
     final user = await _authService.signUpWithEmail(context,name, email, password, phone);
     
     if (user != null) {
-      Navigator.pushReplacementNamed(context, GeneralScreen.routeName);
+      Navigator.pushAndRemoveUntil(context , MaterialPageRoute(builder: (context) => GeneralScreen()),
+    (route) => false, // This removes all previous routes from the stack
+  );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Signup failed. Please try again.")),

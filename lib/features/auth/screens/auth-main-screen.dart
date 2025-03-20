@@ -52,8 +52,8 @@ static const String routeName = '/auth-main-screen';
             _buildButton(context, "Sign Up", AppColors.secondary, SignUpScreen.routeName),   // Gold Button
             _buildButton(context, "Sign In", AppColors.accent, SignInScreen.routeName ),     // Soft White Button
             _buildOutlinedButton(context, "Enter as Guest",
-             AdminScreen.routeName  
-            //GeneralScreen.routeName 
+            //  AdminScreen.routeName  
+            GeneralScreen.routeName 
              ),          // Outlined Button
 
             const SizedBox(height: 30),
@@ -112,7 +112,8 @@ static const String routeName = '/auth-main-screen';
             fontWeight: FontWeight.w600,
           ),
         ),
-        onPressed: () => Navigator.pushNamed(context, route),
+        onPressed: () => Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => GeneralScreen()),
+    (route) => false,  ),
       ),
     );
   }

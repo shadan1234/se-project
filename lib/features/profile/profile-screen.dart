@@ -6,7 +6,7 @@ import 'package:se_project/features/auth/screens/signup-screen.dart';
 import 'package:se_project/features/auth/services/auth-service.dart';
 import 'package:se_project/features/profile/booking-history.dart';
 import 'package:se_project/features/profile/edit-profile.dart';
-import 'package:se_project/features/provider/user_provider.dart';
+import 'package:se_project/provider/user_provider.dart';
 
 class ProfileScreen extends StatelessWidget {
   AuthService _authService = AuthService();
@@ -56,11 +56,13 @@ class ProfileScreen extends StatelessWidget {
           SizedBox(height: 20),
           // Profile Options
           _buildProfileOption(Icons.edit, "Edit Profile", () {
+            
+            // print(user.name);
             Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) =>
-                    EditProfileScreen(currentContact: user.contactNo ),
+                    EditProfileScreen(currentContact: user.contactNo , currentEmail: user.email,currentImageUrl: '' ,currentName: user.name,),
               ),
             );
           }),

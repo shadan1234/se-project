@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:se_project/constants/colors.dart';
 import 'package:se_project/constants/size_config.dart';
 import 'package:se_project/constants/text-styles.dart';
+import 'package:se_project/features/auth/screens/auth-main-screen.dart';
 import 'package:se_project/features/onboarding/components/onboarding_data.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -92,7 +93,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     ),
     child: TextButton(child: Text(currentIndex==controller.items.length-1?'Get Started':'Continue', style: const TextStyle(color: AppColors.background),), onPressed: (){
   setState(() {
-    // currentIndex!=controller.items.length-1? currentIndex++:Navigator.pushNamed(context, CreateAccountScreen.routeName);
+    currentIndex!=controller.items.length-1? currentIndex++:Navigator.pushReplacementNamed(context, AuthMainScreen.routeName);
 
   }); 
     },),

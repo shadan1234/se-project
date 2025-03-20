@@ -4,7 +4,7 @@ import 'package:se_project/features/admin/add_room_screen.dart';
 import 'package:se_project/features/admin/modify_room.dart';
 import 'package:se_project/features/customer/booking/room-booking.dart';
 import 'package:se_project/features/customer/services/room-service.dart';
-import 'package:se_project/features/provider/user_provider.dart';
+import 'package:se_project/provider/user_provider.dart';
 import 'package:se_project/models/room_model.dart';
 
 class RoomListScreen extends StatelessWidget {

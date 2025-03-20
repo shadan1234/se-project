@@ -5,7 +5,7 @@ import 'package:se_project/constants/app-themes.dart';
 import 'package:se_project/constants/size_config.dart';
 import 'package:se_project/features/auth/screens/auth-main-screen.dart';
 import 'package:se_project/features/onboarding/screens/onboarding-screen.dart';
-import 'package:se_project/features/provider/user_provider.dart';
+import 'package:se_project/provider/user_provider.dart';
 // import 'package:se_project/providers/user_provider.dart'; // Import UserProvider
 import 'package:se_project/router.dart';
 import 'firebase_options.dart';
@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
       title: 'SE Project',
       theme: AppTheme.themeData,
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: AuthMainScreen(), // Change this to `_getHomeScreen()` if needed
+      home: OnBoardingScreen(), // Change this to `_getHomeScreen()` if needed
     );
   }
 

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:se_project/features/provider/user_provider.dart';
+import 'package:se_project/provider/user_provider.dart';
 
 class FirestoreService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
@@ -36,14 +36,16 @@ class FirestoreService {
 }
   final CollectionReference users = FirebaseFirestore.instance.collection('users');
 
-  Future<void> updateUserProfile(BuildContext context,{String ? contact, String? imageUrl}) async {
+  Future<void> updateUserProfile(BuildContext context,{String ? contact, String? imageUrl,String? name, String? email}) async {
     final UserProvider userProvider=Provider.of<UserProvider>(context,listen: false);
     final user=userProvider.users;
     String userId = user!.uid; // Replace with logged-in user ID
     try {
       await users.doc(userId).update({
-        if (contact != null) 'contact': contact,
-        if (imageUrl != null) 'profilePic': imageUrl,
+        if (contact != null) 'contactNo': contact,
+        if (imageUrl != null) 'profilePic': imageUrl, 
+        if(name!= null ) 'name':name,
+        if(email!=null) 'email':email,
       });
     } catch (e) {
       print("Error updating profile: $e");

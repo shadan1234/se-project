@@ -25,11 +25,20 @@ class _SignInScreenState extends State<SignInScreen> {
   DocumentSnapshot userDoc = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
   String role = userDoc['role'];
   
-  if (role == "admin") {
-    Navigator.pushReplacementNamed(context, AdminScreen.routeName);
-  } else {
-    Navigator.pushReplacementNamed(context, GeneralScreen.routeName);
-  }
+if (role == "admin") {
+  Navigator.pushAndRemoveUntil(
+    context,
+    MaterialPageRoute(builder: (context) => AdminScreen()),
+    (route) => false, // This removes all previous routes from the stack
+  );
+} else {
+  Navigator.pushAndRemoveUntil(
+    context,
+    MaterialPageRoute(builder: (context) => GeneralScreen()),
+    (route) => false, // This removes all previous routes from the stack
+  );
+}
+
 }
 
 
