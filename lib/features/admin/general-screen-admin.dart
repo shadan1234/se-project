@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:se_project/constants/colors.dart';
 import 'package:se_project/features/admin/admin-dashobard/admin-dashboard-screen.dart';
-import 'package:se_project/features/admin/manage-rooms/manage-rooms-screen.dart';
 import 'package:se_project/features/admin/manage-staff/manage-staff-screen.dart';
 import 'package:se_project/features/admin/reports/reports-screen.dart';
 import 'package:se_project/features/customer/booking/rooms-screen.dart';

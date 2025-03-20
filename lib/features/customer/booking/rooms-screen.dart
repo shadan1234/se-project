@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:se_project/features/admin/add_room_screen.dart';
 import 'package:se_project/features/admin/modify_room.dart';
 import 'package:se_project/features/customer/booking/room-booking.dart';
 import 'package:se_project/features/customer/services/room-service.dart';
@@ -47,7 +48,7 @@ class RoomListScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                         child: Image.network(
                           room.imageUrl,
-                          width: 90, // Slightly bigger for a premium look
+                          width: 90,
                           height: 90,
                           fit: BoxFit.cover,
                           errorBuilder: (context, error, stackTrace) {
@@ -99,10 +100,10 @@ class RoomListScreen extends StatelessWidget {
                             icon: Icon(Icons.arrow_forward_ios, color: Colors.blueAccent, size: 22),
                             onPressed: () {
                               // Navigate to Room Details Page
-                              Navigator.pushNamed(context, RoomBookingScreen.routeName , arguments: room);
+                              Navigator.pushNamed(context, RoomBookingScreen.routeName, arguments: room);
                             },
                           ),
-                          
+
                           // Edit Button (Only for Admins)
                           if (user != null && user.role == "admin")
                             TextButton(
@@ -131,6 +132,23 @@ class RoomListScreen extends StatelessWidget {
           );
         },
       ),
+
+      // Add Room Button (Visible only for Admins)
+      floatingActionButton: user != null && user.role == "admin"
+          ? FloatingActionButton.extended(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AddRoomScreen(), // Assuming ModifyRoomScreen allows adding a new room
+                  ),
+                );
+              },
+              icon: Icon(Icons.add),
+              label: Text("Add Room"),
+              backgroundColor: Colors.blueAccent,
+            )
+          : null, // No button if not an admin
     );
   }
 }
